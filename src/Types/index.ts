@@ -31,3 +31,13 @@ export type TCategoryInitialState = {
     items: ICartItem[];
   };
   
+
+
+// lets try filter operation
+
+  export interface ProductFilters {
+    searchTerm?: string;
+    categories?: string[];
+    sortByPrice?: "asc" | "desc";
+    price?: number;
+  }

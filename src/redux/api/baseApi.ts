@@ -1,6 +1,18 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+
+// interface GetProductsQueryParams {
+//     searchTerm?: string;
+//     category?: string;
+//     sortByPrice?: 'asc' | 'desc';
+//     minPrice?: number;
+//     maxPrice?: number;
+//   }
+  
+
+  
+
 // Define a service using a base URL and expected endpoints
 export const baseApi = createApi({
     reducerPath: "baseApi",
@@ -8,13 +20,87 @@ export const baseApi = createApi({
     tagTypes: ["products"],
     endpoints: (builder) => ({
         // GET API
-        getProducts: builder.query({
-            query: () => ({
-                method: "GET",
-                url: "/products",
-            }),
-            providesTags: ["products"],
-        }),
+
+        // getProducts: builder.query({
+        //     query: () => ({
+        //         method: "GET",
+        //         url: "/products",
+        //     }),
+        //     providesTags: ["products"],
+        // }),
+
+
+
+
+
+        // getProducts: builder.query({
+        //     query: ({ searchTerm, category, sortByPrice }) => {
+        //         // Build query string based on the provided parameters
+        //         const params = new URLSearchParams();
+
+        //         if (searchTerm) params.append('searchTerm', searchTerm);
+        //         if (category) params.append('category', category);
+        //         if (sortByPrice) params.append('sortByPrice', sortByPrice);
+
+        //         return {
+        //             url: `/products?${params.toString()}`,
+        //             method: 'GET',
+        //         };
+        //     },
+        //     providesTags: ['products'],
+        // }),
+
+
+
+
+        // Define the query parameters interface on the up side
+
+//   getProducts: builder.query({
+//     query: ({ searchTerm, category, sortByPrice, minPrice, maxPrice }: GetProductsQueryParams) => {
+//       // Build query string based on the provided parameters
+//       const params = new URLSearchParams();
+  
+//       if (searchTerm) params.append('searchTerm', searchTerm);
+//       if (category) params.append('category', category);
+//       if (sortByPrice) params.append('sortByPrice', sortByPrice);
+//       if (minPrice !== undefined) params.append('minPrice', minPrice.toString());
+//       if (maxPrice !== undefined) params.append('maxPrice', maxPrice.toString());
+  
+//       return {
+//         url: `/products?${params.toString()}`,
+//         method: 'GET',
+//       };
+//     },
+//     providesTags: ['products'],
+//   }),
+
+//  ok ok ?
+getProducts: builder.query({
+    query: ({ searchTerm, category, sortByPrice, minPrice, maxPrice }) => {
+      const params = new URLSearchParams();
+      
+      if (searchTerm) params.append('searchTerm', searchTerm);
+      if (category) params.append('category', category);
+      if (sortByPrice) params.append('sortByPrice', sortByPrice);
+      if (minPrice !== undefined) params.append('minPrice', minPrice.toString());
+      if (maxPrice !== undefined) params.append('maxPrice', maxPrice.toString());
+
+      return {
+        url: `/products?${params.toString()}`,
+        method: 'GET',
+      };
+    },
+    providesTags: ['products'],
+  }),
+
+
+
+
+
+
+
+
+
         // GET SINGLE Products api
         getSingleProducts: builder.query({
             query: (id) => {

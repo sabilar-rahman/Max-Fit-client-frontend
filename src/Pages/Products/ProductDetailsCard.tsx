@@ -19,7 +19,7 @@ const ProductDetailsCard = ({
             <img
               src={product?.image || "default-image-url.jpg"}
               alt={product?.name || "Product"}
-              className="w-full h-auto object-cover rounded-lg"
+              className="w-80 h-auto object-cover rounded-lg"
             />
           </div>
           <div className="w-full md:w-1/2 md:pl-4 mt-4 md:mt-0">
@@ -27,7 +27,7 @@ const ProductDetailsCard = ({
             <p className="text-xl font-semibold mb-4">
               Price: {product?.price} $
             </p>
-            <p className="text-gray-700 mb-4">Stock:{product?.stock? product.stock : " No Stock Available" }</p>
+            <p className="text-gray-900 mb-4">Stock:{product?.stock? product.stock : " No Stock Available" }</p>
             <p className="text-gray-700 mb-4">Details: {product?.description}</p>
 
             <button

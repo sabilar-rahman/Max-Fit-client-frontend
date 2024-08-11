@@ -27,7 +27,7 @@ const Categories = () => {
           {categories.map((category, index) => (
             <Link
               to={"/products"}
-              state={category.label}
+              state={ { category: category.label }}
               key={index}
               className="group flex flex-col items-center justify-between bg-secondaryColor hover:bg-secondaryColor600 rounded-lg p-5 cursor-pointer transition transform hover:-translate-y-1 hover:shadow-lg duration-300"
             >
