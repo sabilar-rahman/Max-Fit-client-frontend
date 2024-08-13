@@ -1,10 +1,9 @@
 import React from "react";
 import Loaderspinner from "@/loading/Loaderspinner";
 import { useGetProductsQuery } from "@/redux/api/baseApi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import FeaturedCard from "./FeaturedCard";
 import { TPro } from "@/Types";
-
 
 const Featured = () => {
   const { data, isLoading } = useGetProductsQuery({});
@@ -32,18 +31,21 @@ const Featured = () => {
     //     </Link>
     //   </div>
     // </div>
-    <div className="container mx-auto">
+    <div className="container mx-auto mb-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-2">
+        {products.map((product: TPro) => (
+          <FeaturedCard key={product?._id} product={product} />
+        ))}
+      </div>
 
-    
-
-    <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-2">
-    {products.map((product: TPro) => (
-      <FeaturedCard key={product?._id} product={product} />
-    ))}
-  </div>
-
-</div>
-
+      <div className="card-actions justify-center">
+        <NavLink to={`/products`}>
+          <button className="btn text-white bg-[#02c39a] hover:bg-[#028978]">
+            Explore More
+          </button>
+        </NavLink>
+      </div>
+    </div>
   );
 };
 
