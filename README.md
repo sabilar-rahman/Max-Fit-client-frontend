@@ -71,6 +71,6 @@ Proceed to checkout, where you can review your order, apply any discount codes, 
 This frontend interacts with the backend APIs to fetch product data, manage cart.
 
 [Backend Repository: https://github.com/sabilar-rahman/Max-Fit-server-backend](https://github.com/sabilar-rahman/Max-Fit-server-backend) 
-- live link
+
 [Backend live link: https://maxfit-server.vercel.app](https://maxfit-server.vercel.app/)
 
