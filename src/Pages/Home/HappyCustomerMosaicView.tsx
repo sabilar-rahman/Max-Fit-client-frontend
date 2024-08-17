@@ -1,6 +1,18 @@
-import React from 'react';
+import  { useEffect } from 'react';
+
+import AOS from "aos";
+
+import "aos/dist/aos.css"
 
 const MosaicGallery = () => {
+
+
+  useEffect(()=>{
+    AOS.init({duration:1200})
+  })
+
+
+
   const images = [
     { src: "https://media.istockphoto.com/id/1370782450/photo/shot-of-a-muscular-young-man-using-a-cellphone-while-exercising-in-a-gym.jpg?s=612x612&w=0&k=20&c=C0FiZBW4w9gYZ1wl4d28jHy6IeFniBKCGmfvdGabXSk=", alt: "Person 1", colSpan: "col-span-2", rowSpan: "row-span-2" },
     { src: "https://img.freepik.com/premium-photo/fully-equipped-gym-happy-clients-shot-young-man-doing-inventory-while-working-gym_590464-53937.jpg", alt: "Person 2", colSpan: "col-span-1", rowSpan: "row-span-1" },
@@ -12,11 +24,12 @@ const MosaicGallery = () => {
 
   return (
     <div className="bg-gray-100 py-12">
-      <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
+      <div  className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-10" data-aos = "fade-up">
           Our Happy Customers
+          <hr className="w-20 mt-2 border-[3px] mx-auto border-[#02c39a] " data-aos = "fade-right" />
         </h1>
-        <div className="grid grid-cols-4 grid-rows-3 gap-4">
+        <div className="grid grid-cols-4 grid-rows-3 gap-4" data-aos = "fade-up">
           {images.map((image, index) => (
             <div
               key={index}

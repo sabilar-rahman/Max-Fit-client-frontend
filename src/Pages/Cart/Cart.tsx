@@ -16,6 +16,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import PageTitle from "@/PageTitleHelmet/PageTitle";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +39,7 @@ const Cart = () => {
   return (
     <>
       <div className="p-4 my-8 container mx-auto">
+      <PageTitle title="Cart | Max Fit"/>
         {items.length > 0 && (
           <h2 className="font-bold text-4xl leading-10 mb-8 text-center text-black">
             Shopping Cart
@@ -180,7 +182,7 @@ const Cart = () => {
                 Total: ${totalPrice().toFixed(2)}
               </h2>
               <NavLink to="/checkout">
-                <button className="btn btn-primary">Proceed to Checkout</button>
+                <button className="btn  text-white bg-[#02c39a] hover:bg-[#028978]">Proceed to Checkout</button>
               </NavLink>
             </div>
           </div>
@@ -191,3 +193,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
+ 

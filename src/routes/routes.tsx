@@ -9,6 +9,7 @@ import CreateAProduct from "@/Pages/Products/CreateAProduct";
 import ProductDetails from "@/Pages/Products/ProductDetails";
 import UpdateAProduct from "@/Pages/Products/UpdateAProduct";
 import Checkout from "@/Pages/Cart/Checkout";
+import FinishedSuccessfully from "@/Pages/Cart/FinishedSuccessfully";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/finishedSuccessfully",
+        element: <FinishedSuccessfully />,
       },
       {
         path: "/addProduct",

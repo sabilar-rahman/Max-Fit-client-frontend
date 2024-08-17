@@ -1,65 +1,18 @@
-// import React from 'react';
 
-// const Benefits = () => {
-//   return (
-//     <div className="bg-gray-100 py-12">
-//       <div className="container mx-auto px-6">
-//         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-//           Why Choose Our Gym Products?
-//           <hr className="w-20 mt-2 border-[3px] mx-auto border-[#02c39a] " />
-//         </h1>
-        
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {/* Benefit 1 */}
-//           <div className="bg-white shadow-lg rounded-lg p-6 text-center">
-//             <img
-//               src="/images/high-quality.png"
-//               alt="High Quality"
-//               className="w-24 h-24 mx-auto mb-4"
-//             />
-//             <h3 className="text-xl font-semibold text-gray-800 mb-2">High Quality</h3>
-//             <p className="text-gray-600">
-//               Our gym products are made from premium materials to ensure durability and longevity.
-//             </p>
-//           </div>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-//           {/* Benefit 2 */}
-//           <div className="bg-white shadow-lg rounded-lg p-6 text-center">
-//             <img
-//               src="/images/affordable-prices.png"
-//               alt="Affordable Prices"
-//               className="w-24 h-24 mx-auto mb-4"
-//             />
-//             <h3 className="text-xl font-semibold text-gray-800 mb-2">Affordable Prices</h3>
-//             <p className="text-gray-600">
-//               We offer competitive pricing without compromising on quality.
-//             </p>
-//           </div>
-
-//           {/* Benefit 3 */}
-//           <div className="bg-white shadow-lg rounded-lg p-6 text-center">
-//             <img
-//               src="/images/easy-to-use.png"
-//               alt="Easy to Use"
-//               className="w-24 h-24 mx-auto mb-4"
-//             />
-//             <h3 className="text-xl font-semibold text-gray-800 mb-2">Easy to Use</h3>
-//             <p className="text-gray-600">
-//               Our products are user-friendly and suitable for all fitness levels.
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Benefits;
-
-
-import React from 'react';
+import  { useEffect } from 'react';
 
 const Benefits = () => {
+
+  useEffect(()=>{
+    AOS.init({duration:1200})
+  })
+
+
+
+
   const benefits = [
     {
       title: "High Quality Materials",
@@ -100,12 +53,12 @@ const Benefits = () => {
   ];
 
   return (
-    <div className="">
+    <div className=""  data-aos="fade-right">
       <div className="container mx-auto px-6">
         {/* <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
           Benefits of Using Our Gym Products
         </h1> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 " >
           {benefits.map((benefit, index) => (
             <div
               key={index}
@@ -116,7 +69,7 @@ const Benefits = () => {
                 style={{ backgroundImage: `url(${benefit.image})` }}
               ></div>
               <div className="relative z-10">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2"  data-aos = "fade-right">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600">{benefit.description}</p>

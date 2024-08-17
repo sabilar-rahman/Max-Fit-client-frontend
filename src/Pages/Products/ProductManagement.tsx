@@ -17,6 +17,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import PageTitle from "@/PageTitleHelmet/PageTitle";
 
 const ProductManagement = () => {
   const { data, isLoading } = useGetProductsQuery({});
@@ -58,6 +59,7 @@ const ProductManagement = () => {
 
   return (
     <div className="container mx-auto min-h-0 lg:min-h-screen">
+        <PageTitle title="Product Manage | Max Fit"/>
       <div className="flex justify-center items-center mb-4">
         <Link to={`/addProduct`}>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

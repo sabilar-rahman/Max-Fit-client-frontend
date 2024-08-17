@@ -1,7 +1,7 @@
-import React from "react";
+
 import Loaderspinner from "@/loading/Loaderspinner";
 import { useGetProductsQuery } from "@/redux/api/baseApi";
-import { Link, NavLink } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import FeaturedCard from "./FeaturedCard";
 import { TPro } from "@/Types";
 
@@ -19,18 +19,8 @@ const Featured = () => {
   }
 
   return (
-    // <div className="section-gap">
 
-    //   <FeaturedCard products={products} />
-    //   <div className="mt-10 text-center">
-    //     <Link
-    //       to="/products"
-    //       className="bg-secondaryColor text-white font-bold py-3 px-5 rounded-sm hover:bg-primaryColor"
-    //     >
-    //       Explore more
-    //     </Link>
-    //   </div>
-    // </div>
+
     <div className="container mx-auto mb-4">
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-2">
         {products.map((product: TPro) => (

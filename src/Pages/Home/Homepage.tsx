@@ -1,13 +1,17 @@
-import React from "react";
+
 import Hero from "./Hero";
 import Categories from "./Categories";
 import Featured from "./Featured";
 import Benefits from "./Benefits";
 import HappyCustomerMosaicView from "./HappyCustomerMosaicView";
+import PageTitle from "@/PageTitleHelmet/PageTitle";
 
 const Homepage = () => {
   return (
     <div>
+         <PageTitle title="Home Page | Max Fit"/>
+
+
       <Hero></Hero>
       <div>
         <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold py-8">

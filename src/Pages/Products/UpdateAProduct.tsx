@@ -1,9 +1,11 @@
+import PageTitle from "@/PageTitleHelmet/PageTitle";
 import {
   useGetSingleProductsQuery,
   useUpdateProductsMutation,
 } from "@/redux/api/baseApi";
 
 import { TPro } from "@/Types";
+
 import { useForm } from "react-hook-form";
 
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,6 +13,7 @@ import { toast } from "sonner";
 
 const UpdateAProduct = () => {
   const navigate = useNavigate();
+
   const { id } = useParams(); // Extract 'id' from the params
 
   // Fetch the single product data
@@ -59,6 +62,7 @@ const UpdateAProduct = () => {
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md lg:my-28 lg:w-2/4">
+      <PageTitle title="Update Product | Max Fit" />
       <div className="flex justify-center font-extrabold text-lg mb-5">
         <h1>Update Product</h1>
       </div>

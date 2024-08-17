@@ -1,6 +1,6 @@
 import Footer from "@/Pages/Shared/Footer";
 import Navbar from "@/Pages/Shared/Navbar";
-import React from "react";
+// import React from "react";
 import { Outlet } from "react-router-dom";
 
 const Root = () => {

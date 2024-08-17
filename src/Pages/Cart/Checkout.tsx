@@ -1,14 +1,15 @@
+import PageTitle from "@/PageTitleHelmet/PageTitle";
 import { useCreateOrderMutation } from "@/redux/api/baseApi";
 import { clearCart } from "@/redux/cartSlice";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import { useEffect, useState } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { toast } from "sonner";
-
-
 
 interface ICheckoutFormInputs {
   name: string;
@@ -18,17 +19,24 @@ interface ICheckoutFormInputs {
   payment: string;
 }
 
-
 const Checkout = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [isDirty, setIsDirty] = useState(false);
 
   const cart = useAppSelector((state: RootState) => state.cart);
   const [newOrder] = useCreateOrderMutation();
 
-  const { register, handleSubmit } = useForm<ICheckoutFormInputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty: formIsDirty },
+  } = useForm<ICheckoutFormInputs>();
 
-  const onSubmit: SubmitHandler<ICheckoutFormInputs> = async (data: unknown) => {
+  const onSubmit: SubmitHandler<ICheckoutFormInputs> = async (
+    data: unknown
+  ) => {
     const orderData = {
       user: data,
       cart: cart.items,
@@ -38,7 +46,7 @@ const Checkout = () => {
       await newOrder(orderData).unwrap;
       dispatch(clearCart());
       toast.success("Order confirmed");
-      // navigate("/products");
+      navigate("/finishedSuccessfully");
       console.log("Order Data:", newOrder);
     } catch (err) {
       toast.error("Something went wrong");
@@ -47,8 +55,30 @@ const Checkout = () => {
     }
   };
 
+  // Track form changes
+  useEffect(() => {
+    setIsDirty(formIsDirty);
+  }, [formIsDirty]);
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (isDirty) {
+        event.preventDefault();
+        event.returnValue =
+          "You have unsaved changes. Are you sure you want to leave?";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isDirty]);
+
   return (
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md lg:my-28 lg:w-2/4">
+      <PageTitle title="Checkout | Max Fit" />
       <div className="flex justify-center font-extrabold text-lg mb-5">
         <h1>Checkout Here</h1>
       </div>
@@ -119,7 +149,7 @@ const Checkout = () => {
           <div className="form-control mt-6 w-1/4">
             <button
               disabled={cart.items.length === 0}
-              className="btn btn-primary"
+              className="btn text-white bg-[#02c39a] hover:bg-[#028978]"
             >
               Place Order
             </button>
