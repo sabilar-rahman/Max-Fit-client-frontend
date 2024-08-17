@@ -41,8 +41,8 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/sabilar-rahman/Max-Fit-client-frontend
-   cd your-repo-name/frontend
+   git clone https://github.com/sabilar-rahman/Max-Fit-client-frontend.git
+   cd your-repo-name
    ```
 2. Install dependencies::
    ```
