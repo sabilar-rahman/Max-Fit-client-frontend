@@ -23,9 +23,9 @@ Max Fit is designed to be a user-friendly and responsive online marketplace that
 
 ## Technology Stack
 - Frontend: React, Redux, TypeScript, Tailwind CSS, AOS (Animate on Scroll)
-- Backend: Node.js, Express.js
+- Backend:  Express.js
 - Database: MongoDB
-- Others: Zod for schema validation, Next.js for server-side rendering
+- Others: Zod for schema validation
 
 ## Installation Guideline
 ### Prerequisites
